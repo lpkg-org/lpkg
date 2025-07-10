@@ -282,7 +282,6 @@ pub fn install(conn: &mut Connection, file: &str) -> Result<()> {
     let output = std::process::Command::new("sudo")
         .arg("gtk-update-icon-cache")
         .arg("-f")
-        .arg("/usr/local/share/icons/hicolor/")
         .output()
         .context("Failed to refresh icon cache")?;
 
