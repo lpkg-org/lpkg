@@ -19,6 +19,11 @@ echo "Removing lpkg installed applications directory (/usr/local/lpkg/packages).
 sudo rm -rf /usr/local/lpkg/packages
 echo "✅ lpkg installed applications directory removed."
 
+# 4. Remove the base lpkg installation directory if empty
+echo "Attempting to remove /usr/local/lpkg if it's empty..."
+sudo rmdir /usr/local/lpkg 2>/dev/null || true
+echo "✅ /usr/local/lpkg removal attempted."
+
 # 4. Remove the lpkg repository directory (if it exists in the current working directory)
 #    This assumes the script is run from the directory where lpkg was cloned.
 if [ -d "lpkg" ]; then
