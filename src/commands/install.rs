@@ -277,6 +277,21 @@ pub fn install(conn: &mut Connection, file: &str) -> Result<()> {
         println!("Copied icon file to: {}", icon_file_dest.display());
     }
 
+    // Refresh icon cache
+    println!("Refreshing icon cache...");
+    let output = std::process::Command::new("sudo")
+        .arg("gtk-update-icon-cache")
+        .arg("-f")
+        .arg("/usr/local/share/icons/hicolor/")
+        .output()
+        .context("Failed to refresh icon cache")?;
+
+    if !output.status.success() {
+        eprintln!("Warning: Failed to refresh icon cache. Stderr: {}", String::from_utf8_lossy(&output.stderr));
+    } else {
+        println!("Icon cache refreshed successfully.");
+    }
+
     // Run post-install script if specified after file installation
     let scripts_dir = temp_path.join("scripts");
     if scripts_dir.exists() && scripts_dir.is_dir() {
