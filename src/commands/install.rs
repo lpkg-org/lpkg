@@ -248,7 +248,7 @@ pub fn install(conn: &mut Connection, file: &str) -> Result<()> {
     let icon_file_src = temp_path
         .join("files/usr/share/icons/hicolor/scalable/apps")
         .join(format!("{}.png", metadata.name));
-    let icon_file_dest_dir = PathBuf::from("/usr/local/share/icons/hicolor/scalable/apps");
+    let icon_file_dest_dir = PathBuf::from("/usr/local/share/icons/hicolor/128x128/apps");
     let icon_file_dest = icon_file_dest_dir.join(format!("{}.png", metadata.name));
 
     if icon_file_src.exists() {
@@ -275,21 +275,6 @@ pub fn install(conn: &mut Connection, file: &str) -> Result<()> {
             icon_file_dest.display()
         ))?;
         println!("Copied icon file to: {}", icon_file_dest.display());
-    }
-
-    // Refresh icon cache
-    println!("Refreshing icon cache...");
-    let output = std::process::Command::new("sudo")
-        .arg("gtk-update-icon-cache")
-        .arg("-f")
-        .arg("--ignore-theme-index")
-        .output()
-        .context("Failed to refresh icon cache")?;
-
-    if !output.status.success() {
-        eprintln!("Warning: Failed to refresh icon cache. Stderr: {}", String::from_utf8_lossy(&output.stderr));
-    } else {
-        println!("Icon cache refreshed successfully.");
     }
 
     // Run post-install script if specified after file installation

@@ -96,7 +96,7 @@ fn prepare_flutter_project(conn: &mut Connection, project_root: &Path, meta_path
     fs::create_dir_all(&files_dir).context("Failed to create files directory")?;
 
     let usr_share_applications_dir = files_dir.join("usr/share/applications");
-    let usr_share_icons_dir = files_dir.join("usr/share/icons/hicolor/scalable/apps");
+    let usr_share_icons_dir = files_dir.join("usr/share/icons/hicolor/128x128/apps");
 
     fs::create_dir_all(&usr_share_applications_dir)
         .context("Failed to create applications directory")?;
