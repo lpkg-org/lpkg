@@ -18,6 +18,8 @@ struct Cli {
 enum Commands {
     /// Initialize a project for lpkg packaging
     Init,
+    /// Initialize the lpkg database schema
+    Setup,
     /// Install a local .lpkg package file
     Install {
         /// Path to the .lpkg file
@@ -112,11 +114,14 @@ fn main() -> Result<()> {
 
     let mut conn = db::connection::get_connection(is_read_only_command)?;
 
-    // Initialize schema for all commands to ensure tables exist
-    db::schema::initialize_schema(&mut conn)?;
+    if !is_read_only_command {
+        // Only initialize schema for commands that might write to the DB
+        db::schema::initialize_schema(&mut conn)?;
+    }
 
     let result = match &cli.command {
         Commands::Init => commands::init::init(&mut conn),
+        Commands::Setup => commands::setup::setup(),
         Commands::Install { file } => commands::install::install(&mut conn, file),
         Commands::Remove { package } => commands::remove::remove(&mut conn, package),
         Commands::List => commands::list::list(&conn),

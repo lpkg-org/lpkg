@@ -48,7 +48,12 @@ sudo bash -c '
 
 echo "✅ System directories configured and binary installed."
 
-# 5. Verify installation
+# 5. Initialize database schema
+echo "Initializing lpkg database schema (requires sudo)..."
+sudo lpkg setup || echo "⚠️ Warning: Database schema initialization failed. This might cause issues later."
+echo "✅ Database schema initialization attempted."
+
+# 6. Verify installation
 echo "🔍 Verifying lpkg installation..."
 if lpkg --version >/dev/null 2>&1; then
     echo "✅ lpkg installation complete! 🎉"
