@@ -34,6 +34,14 @@ To quickly install `lpkg` and its dependencies (Rust), run the following command
 curl -sSf https://raw.githubusercontent.com/lpkg-org/lpkg/refs/heads/main/install.sh | sh
 ```
 
+## Uninstallation
+
+To completely uninstall `lpkg` from your system, including the binary, database, and installed applications, run the following command:
+
+```bash
+curl -sSf https://raw.githubusercontent.com/lpkg-org/lpkg/refs/heads/main/uninstall.sh | sudo bash
+```
+
 ### Build from Source
 
 Alternatively, you can build `lpkg` from source. Follow these steps:
