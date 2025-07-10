@@ -155,7 +155,7 @@ The `.lpkg` format is a compressed `.tar.zst` archive with the following structu
 
 We welcome contributions to the LinuxPackage project! To get involved:
 
-1. Fork the repository on GitHub: [https://github.com/linuxpackage-org/lpkg](https://github.com/linuxpackage-org/lpkg)
+1. Fork the repository on GitHub: [https://github.com/lpkg-org/lpkg](https://github.com/lpkg-org/lpkg)
 2. Make your changes and submit a pull request.
 3. Join the discussion on our community forums or issue tracker for feature requests and bug reports.
 
@@ -165,4 +165,4 @@ This project is licensed under the MIT License or Apache License 2.0, at your op
 
 ## Contact
 
-For more information, visit our website at [https://linuxpackage.org](https://linuxpackage.org) or contact us at [contact@linuxpackage.org](mailto:contact@linuxpackage.org).
+For more information, visit our website at [https://lpkg.org](https://lpkg.org) or contact us at [contact@lpkg.org](mailto:contact@lpkg.org).
