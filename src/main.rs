@@ -112,10 +112,8 @@ fn main() -> Result<()> {
 
     let mut conn = db::connection::get_connection(is_read_only_command)?;
 
-    if !is_read_only_command {
-        // Only initialize schema for commands that might write to the DB
-        db::schema::initialize_schema(&mut conn)?;
-    }
+    // Initialize schema for all commands to ensure tables exist
+    db::schema::initialize_schema(&mut conn)?;
 
     let result = match &cli.command {
         Commands::Init => commands::init::init(&mut conn),
