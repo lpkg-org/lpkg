@@ -41,7 +41,7 @@ Alternatively, you can build `lpkg` from source. Follow these steps:
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/linuxpackage-org/lpkg.git
+   git clone https://github.com/lpkg-org/lpkg.git
    cd lpkg
    ```
 
