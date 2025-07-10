@@ -1,0 +1,43 @@
+[package]
+name = "lpkg"
+version = "0.1.0"
+edition = "2024"
+authors = ["LinuxPackage Team <contact@linuxpackage.org>"]
+description = "A universal, native package manager for Linux distributions"
+repository = "https://github.com/linuxpackage-org/lpkg"
+license = "MIT OR Apache-2.0"
+homepage = "https://linuxpackage.org"
+keywords = ["package-manager", "linux", "native", "cli"]
+categories = ["command-line-utilities", "os::linux-apis"]
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+rusqlite = { version = "0.31", features = ["bundled"] }
+tar = "0.4"
+flate2 = "0.2"
+zstd = "0.13"
+toml = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+dirs = "5.0"
+anyhow = "1.0"
+sha2 = "0.10"
+walkdir = "2.3"
+ring = "0.17"
+hex = "0.4"
+log = "0.4"
+env_logger = "0.11"
+reqwest = { version = "0.11", features = ["json"] }
+tokio = { version = "1.0", features = ["full"] }
+ureq = { version = "2.9", features = ["json"] }
+tempfile = "3.10"
+semver = "1.0"
+toml_edit = "0.20"
+yaml-rust = "0.4"
+regex = "1.10"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+panic = "abort"
