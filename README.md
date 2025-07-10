@@ -1,6 +1,8 @@
 # LinuxPackage (lpkg)
 
-![LinuxPackage Logo](https://linuxpackage.org/assets/logo.png)
+<div align="center">
+  <img src="/assets/logo2.png" alt="LinuxPackage Logo">
+</div>
 
 **lpkg** is a universal, native, zero-runtime package manager designed for all major Linux distributions. It aims to provide a fast, lightweight, and secure way to install software natively without sandboxing or additional runtimes like Snap or Flatpak.
 
