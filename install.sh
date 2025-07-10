@@ -22,7 +22,7 @@ if [ -d "lpkg" ]; then
     cd lpkg
     git pull origin main || echo "⚠️ Warning: Failed to pull from remote. Using existing code."
 else
-    git clone https://github.com/mada-muniraja/lpkg.git
+    git clone https://github.com/lpkg-org/lpkg.git
     cd lpkg
 fi
 echo "✅ lpkg repository ready."

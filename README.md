@@ -31,7 +31,7 @@ The primary goal of LinuxPackage is to create a unified package management solut
 To quickly install `lpkg` and its dependencies (Rust), run the following command:
 
 ```bash
-curl -sSf https://raw.githubusercontent.com/mada-muniraja/lpkg/refs/heads/main/install.sh | sh
+curl -sSf https://raw.githubusercontent.com/lpkg-org/lpkg/refs/heads/main/install.sh | sh
 ```
 
 ### Build from Source
