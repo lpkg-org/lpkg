@@ -246,7 +246,7 @@ pub fn install(conn: &mut Connection, file: &str) -> Result<()> {
     }
 
     let icon_file_src = temp_path
-        .join("files/usr/share/icons/hicolor/scalable/apps")
+        .join("files/usr/share/icons/hicolor/128x128/apps")
         .join(format!("{}.png", metadata.name));
     let icon_file_dest_dir = PathBuf::from("/usr/local/share/icons/hicolor/128x128/apps");
     let icon_file_dest = icon_file_dest_dir.join(format!("{}.png", metadata.name));
