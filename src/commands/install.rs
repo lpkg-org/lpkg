@@ -264,7 +264,7 @@ pub fn install(conn: &mut Connection, file: &str) -> Result<()> {
             "Failed to copy icon file to {}",
             icon_file_dest.display()
         ))?;
-        """        crate::db::operations::add_package_file(
+        crate::db::operations::add_package_file(
             conn,
             package_id,
             icon_file_dest.to_str().unwrap_or_default(),
@@ -295,7 +295,7 @@ pub fn install(conn: &mut Connection, file: &str) -> Result<()> {
                 println!("Icon cache updated successfully.");
             }
         }
-    }""
+    }
 
     // Run post-install script if specified after file installation
     let scripts_dir = temp_path.join("scripts");

@@ -5,9 +5,13 @@ set -e  # Exit immediately if a command exits with a non-zero status
 echo "📦 Starting lpkg installation script..."
 
 # 1. Install Rust
+# Source cargo environment if it exists to ensure cargo is in the PATH
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
+
 if command -v cargo &> /dev/null; then
     echo "✅ Rust is already installed. Skipping Rust toolchain installation."
-    . "$HOME/.cargo/env" # Ensure cargo is in PATH for current session
 else
     echo "🔧 Installing Rust toolchain..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
