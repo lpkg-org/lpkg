@@ -264,7 +264,7 @@ pub fn install(conn: &mut Connection, file: &str) -> Result<()> {
             "Failed to copy icon file to {}",
             icon_file_dest.display()
         ))?;
-        crate::db::operations::add_package_file(
+        """        crate::db::operations::add_package_file(
             conn,
             package_id,
             icon_file_dest.to_str().unwrap_or_default(),
@@ -275,7 +275,27 @@ pub fn install(conn: &mut Connection, file: &str) -> Result<()> {
             icon_file_dest.display()
         ))?;
         println!("Copied icon file to: {}", icon_file_dest.display());
-    }
+
+        // Update icon cache for GTK-based desktop environments
+        if Path::new("/usr/bin/gtk-update-icon-cache").exists() {
+            println!("Updating icon cache...");
+            let output = std::process::Command::new("gtk-update-icon-cache")
+                .arg("-q")
+                .arg("-t")
+                .arg("-f")
+                .arg("/usr/local/share/icons/hicolor")
+                .output()
+                .context("Failed to update icon cache")?;
+            if !output.status.success() {
+                eprintln!(
+                    "Warning: gtk-update-icon-cache failed: {}",
+                    String::from_utf8_lossy(&output.stderr)
+                );
+            } else {
+                println!("Icon cache updated successfully.");
+            }
+        }
+    }""
 
     // Run post-install script if specified after file installation
     let scripts_dir = temp_path.join("scripts");
