@@ -25,15 +25,13 @@ pub fn verify_signature(package_path: &str, sig_path: &str, key_path: &str) -> R
         ));
     }
 
-    // TODO: Implement signature verification with Ed25519 using ring crate once API issues are resolved
-    // Read the public key from the provided key file
+    // The ring crate uses the raw 32-byte public key for Ed25519 verification.
     let key_content =
         fs::read(key_path).context(format!("Failed to read public key from {}", key_path))?;
 
-    // For Ed25519, the public key should be 32 bytes
     if key_content.len() != 32 {
         return Err(anyhow::anyhow!(
-            "Invalid public key length, expected 32 bytes for Ed25519"
+            "Invalid public key length: Ed25519 public keys must be 32 bytes."
         ));
     }
 

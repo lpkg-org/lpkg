@@ -19,12 +19,11 @@ pub fn sign(package_path: &str, key_path: &str, comment: Option<&str>) -> Result
     let key_content =
         fs::read(key_path).context(format!("Failed to read secret key from {}", key_path))?;
 
-    // TODO: Implement signing with Ed25519 using ring crate once API issues are resolved
-    // Parse the key pair (assuming it's in a format ring can use, e.g., seed for Ed25519)
-    // Note: ring expects a seed for key generation, so this assumes the key file contains a seed
+    // Parse the key pair from the secret key seed.
+    // The ring crate uses the raw 32-byte seed for Ed25519.
     if key_content.len() != 32 {
         return Err(anyhow::anyhow!(
-            "Invalid key length, expected 32 bytes for Ed25519 seed"
+            "Invalid secret key length: Ed25519 seeds must be 32 bytes."
         ));
     }
     let _rng = SystemRandom::new();
