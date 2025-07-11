@@ -9,4 +9,5 @@ pub mod verify;
 pub mod rollback;
 pub mod update;
 pub mod init;
+pub mod init_handlers;
 pub mod setup;
