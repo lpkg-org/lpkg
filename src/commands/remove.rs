@@ -8,7 +8,7 @@ use crate::db::operations::{get_package_files_by_id, remove_package_by_id, get_p
 pub fn remove(conn: &mut Connection, package_name: &str) -> Result<()> {
     println!("Removing package: {}", package_name);
 
-    let (package_id, _version, lpkg_path) = match get_package_data(conn, package_name)? {
+    let (package_id, _version, _lpkg_path) = match get_package_data(conn, package_name)? {
         Some((id, version, path)) => (id, version, path),
         None => {
             println!("Package '{}' is not installed.", package_name);

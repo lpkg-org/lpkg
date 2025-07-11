@@ -2,7 +2,7 @@ use anyhow::{Context, Result};
 use rusqlite::Connection;
 use crate::db::operations::{get_package_data, remove_package_by_id};
 use crate::commands::install::install;
-use crate::repository::{search_package, fetch_index, download_package};
+use crate::repository::{search_package, fetch_index};
 use std::fs;
 use std::path::PathBuf;
 

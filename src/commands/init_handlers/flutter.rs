@@ -8,7 +8,7 @@ use toml_edit::{Document, value};
 use yaml_rust::YamlLoader;
 use crate::utils::file_ops::copy_dir_all;
 
-pub fn prepare_flutter_project(conn: &mut Connection, project_root: &Path, meta_path: &Path) -> Result<()> {
+pub fn prepare_flutter_project(_conn: &mut Connection, project_root: &Path, meta_path: &Path) -> Result<()> {
     println!("Detected Flutter project. Preparing for lpkg packaging...");
 
     // 1. Read pubspec.yaml

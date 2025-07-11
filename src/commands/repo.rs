@@ -3,7 +3,7 @@ use rusqlite::Connection;
 use crate::repository::{fetch_index, save_index, load_cached_index, search_package, download_package};
 use std::path::PathBuf;
 
-pub fn add_repo(conn: &mut Connection, url: &str, name: &str) -> Result<()> {
+pub fn add_repo(_conn: &mut Connection, url: &str, name: &str) -> Result<()> {
     println!("Adding repository: {} with name {}", url, name);
 
     // In a real scenario, you might want to store repository info in the DB
@@ -20,7 +20,7 @@ pub fn add_repo(conn: &mut Connection, url: &str, name: &str) -> Result<()> {
     Ok(())
 }
 
-pub fn search_repo(conn: &Connection, package_name: &str, repo_name: Option<&str>) -> Result<()> {
+pub fn search_repo(_conn: &Connection, package_name: &str, repo_name: Option<&str>) -> Result<()> {
     println!(
         "Searching for package: {} in repository: {:?}",
         package_name, repo_name

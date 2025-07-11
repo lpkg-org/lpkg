@@ -4,9 +4,8 @@ use std::fs;
 use std::path::Path;
 use std::process::Command;
 use toml_edit::{Document, value};
-use crate::utils::file_ops::copy_dir_all;
 
-pub fn prepare_rust_project(conn: &mut Connection, project_root: &Path, meta_path: &Path) -> Result<()> {
+pub fn prepare_rust_project(_conn: &mut Connection, project_root: &Path, meta_path: &Path) -> Result<()> {
     println!("Detected Rust project. Preparing for lpkg packaging...");
 
     let cargo_toml_path = project_root.join("Cargo.toml");
